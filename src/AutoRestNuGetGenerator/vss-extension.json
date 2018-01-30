@@ -1,0 +1,83 @@
+{
+  "manifestVersion": 1,
+  "id": "AutoRestNuGetPackageGenerator",
+  "version": "1.0.10",
+  "name": "AutoRest NuGet Package Generator",
+  "scopes": [],
+  "description": "generator for autorest client nuget package",
+  "publisher": "eshopworld",
+  "galleryFlags": [
+    "Preview"
+  ],
+  "icons": {
+    "default": "static/images/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "demands": [
+    "api-version/3.0"
+  ],
+  "tags": [
+    "AutoRest", "NuGet", "Swagger","client", "API"
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "screenshots": [
+    {
+      "path": "AutoRestNuGetGenerator/static/images/screen1.png"
+    }
+  ],
+  "content": {
+    "license": {
+      "path": "AutoRestNuGetGenerator/license.md"
+    },
+    "details": {
+      "path": "AutoRestNuGetGenerator/overview.md"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/eShopWorld/devopsflex-vsts-autorest"
+    },
+    "support": {
+      "uri": "https://github.com/eShopWorld/devopsflex-vsts-autorest"
+    },
+    "issues": {
+      "uri": "https://github.com/eShopWorld/devopsflex-vsts-autorest"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/eShopWorld/devopsflex-vsts-autorest"
+  },
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "AutoRestNuGetGenerator"
+    },
+    {
+      "path": "ps_modules",
+      "packagePath": "AutoRestNuGetGenerator/AutoRestNuGetGenerator/ps_modules"
+    }
+
+  ],
+  "contributions": [
+    {
+      "id": "AutoRestNuGetPackageGenerator",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "AutoRestNuGetGenerator"
+      }
+    }
+  ]
+}
