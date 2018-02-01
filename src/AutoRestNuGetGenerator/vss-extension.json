@@ -65,6 +65,10 @@
     {
       "path": "ps_modules",
       "packagePath": "AutoRestNuGetGenerator/AutoRestNuGetGenerator/ps_modules"
+    },
+    {
+      "path": "dotnet-autorest-createproject",
+      "packagePath": "AutoRestNuGetGenerator/AutoRestNuGetGenerator/dotnet-autorest-createproject"
     }
 
   ],

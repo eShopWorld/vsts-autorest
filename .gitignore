@@ -313,3 +313,4 @@ __pycache__/
 /src/AutoRestNuGetGenerator/tfx.cmd
 /src/tfx.cmd
 /src/tfx
+/src/AutoRestNuGetGenerator/dotnet-autorest-createproject
