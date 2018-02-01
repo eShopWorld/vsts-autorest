@@ -10,7 +10,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 11
+    "Patch": 12
   },
   "demands": [],
   "inputs": [
@@ -22,9 +22,9 @@
       "required": true
     },
     {
-      "name": "OutputFolder",
+      "name": "Namespace",
       "type": "string",
-      "label": "Output Folder for generated output",
+      "label": "namespace for the generated code",
       "defaultValue": "",
       "required": true
     }

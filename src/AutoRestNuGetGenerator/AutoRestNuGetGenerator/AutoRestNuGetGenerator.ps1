@@ -18,27 +18,15 @@ try {
     }
 
     $input_SwaggerURL = Get-VstsInput -Name 'SwaggerURL' -Require
-    $input_OutputFolder = Get-VstsInput -Name 'OutputFolder' -Require
+    $input_Namespace = Get-VstsInput -Name 'Namespace' -Require
   
 
     Write-Output "Inputs..."
     Write-Output "Swagger URL: $input_SwaggerURL"
-    Write-Output "output folder: $input_OutputFolder"
+    Write-Output "Namespace: $input_Namespace"
 	Write-Output "ErrorActionPreference : $input_errorActionPreference"
 
 	$env:path+=";C:\Windows\ServiceProfiles\NetworkService\AppData\Roaming\npm"
-	$env:path+=";C:\tools\dotnet-autorest-createproject"
-
-	try
-	{
-		Write-Output " invoking 'Update-Module DevOpsFlex.Automation.PowerShell -Force -ErrorAction Stop'"
-		Update-Module DevOpsFlex.Automation.PowerShell -Force -ErrorAction Stop
-	}
-	catch
-	{
-		Write-Output "invoking 'Install-Module DevOpsFlex.Automation.PowerShell -Force -Scope CurrentUser -ErrorAction $input_errorActionPreference'"
-		Install-Module DevOpsFlex.Automation.PowerShell -Force -Scope CurrentUser -ErrorAction $input_errorActionPreference
-	}
 
 	Write-Output "invoking 'npm install -g autorest@latest'"
 	npm install -g autorest@latest
@@ -46,8 +34,25 @@ try {
 	Write-Output "invoking 'autorest --reset'"
 	autorest --reset
 
-	New-AutoRestProject $input_SwaggerURL $input_OutputFolder
+	try
+	{
+		Write-Output "Retrieving definition json from $input_SwaggerURL"
+		Invoke-WebRequest $input_SwaggerURL -o definition.json -ErrorAction Stop
+	}
+	catch
+	{
+		Write-Error "Problem retrieving definition file $input_SwaggerURL"
+        exit
+	}
 
+	autorest --input-file=definition.json --csharp --output-folder=output --namespace=$input_Namespace
+	dotnet-autorest-createproject/dotnet autorest-createproject -s definition.json -o output
+
+	pushd output
+
+	dotnet build -c release
+
+	popd
 } finally {
 	Trace-VstsLeavingInvocation $MyInvocation
 }
