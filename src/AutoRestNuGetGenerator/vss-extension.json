@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "AutoRestNuGetPackageGenerator",
-  "version": "1.0.12",
+  "version": "1.0.23",
   "name": "AutoRest NuGet Package Generator",
   "scopes": [],
   "description": "generator for autorest client nuget package",
@@ -65,12 +65,7 @@
     {
       "path": "ps_modules",
       "packagePath": "AutoRestNuGetGenerator/AutoRestNuGetGenerator/ps_modules"
-    },
-    {
-      "path": "dotnet-autorest-createproject/binary",
-      "packagePath": "AutoRestNuGetGenerator/AutoRestNuGetGenerator/dotnet-autorest-createproject"
     }
-
   ],
   "contributions": [
     {
