@@ -23,6 +23,8 @@ The [source](https://github.com/eShopWorld/devopsflex-vsts-autorest) to this ext
 
 - Visual Studio Team Services
 - node 7
+- VS 15 (2017) and higher
+- nuget 4.X
 
 ### Contributors ###
 
