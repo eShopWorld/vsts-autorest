@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "AutoRestNuGetPackageGenerator",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "name": "AutoRest NuGet Package Generator",
   "scopes": [],
   "description": "generator for autorest client nuget package",
@@ -43,18 +43,18 @@
   },
   "links": {
     "getstarted": {
-      "uri": "https://github.com/eShopWorld/devopsflex-vsts-autorest"
+      "uri": "https://github.com/eShopWorld/vsts-autorest"
     },
     "support": {
-      "uri": "https://github.com/eShopWorld/devopsflex-vsts-autorest"
+      "uri": "https://github.com/eShopWorld/vsts-autorest"
     },
     "issues": {
-      "uri": "https://github.com/eShopWorld/devopsflex-vsts-autorest"
+      "uri": "https://github.com/eShopWorld/vsts-autorest"
     }
   },
   "repository": {
     "type": "git",
-    "uri": "https://github.com/eShopWorld/devopsflex-vsts-autorest"
+    "uri": "https://github.com/eShopWorld/vsts-autorest"
   },
   "branding": {
     "color": "rgb(220, 235, 252)",
