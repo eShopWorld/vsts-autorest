@@ -10,7 +10,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 26
+    "Patch": 28
   },
   "demands": [],
   "inputs": [
@@ -26,6 +26,13 @@
       "type": "string",
       "label": "namespace for the generated code",
       "defaultValue": "",
+      "required": true
+    },
+    {
+      "name": "AddServiceClientCredentials",
+      "type": "boolean",
+      "label": "Add Service Client credentials (--add-credentials switch)",
+      "defaultValue": false,
       "required": true
     }
   ],

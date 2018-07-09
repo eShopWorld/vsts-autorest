@@ -19,6 +19,7 @@ try {
 
     $input_SwaggerURL = Get-VstsInput -Name 'SwaggerURL' -Require
     $input_Namespace = Get-VstsInput -Name 'Namespace' -Require
+	$input_AddServiceClientCredentials = Get-VstsInput -Name 'AddServiceClientCredentials' -AsBool -Require
   
 
     Write-Output "Inputs..."
@@ -26,6 +27,7 @@ try {
 	Write-Output "PSScriptRoot: $PSScriptRoot"
     Write-Output "Swagger URL: $input_SwaggerURL"
     Write-Output "Namespace: $input_Namespace"
+	Write-Output "AddServiceClientCredentials: $input_AddServiceClientCredentials"
 	Write-Output "ErrorActionPreference : $input_errorActionPreference"
 
 
@@ -56,10 +58,11 @@ try {
         exit
 	}
 
-	autorest config.md --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace
+	$credentialSwitch = if ($input_AddServiceClientCredentials) {"--add-credentials"} else {""}
 
+	Write-Output "Invoking 'autorest config.md --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch'"
+	autorest config.md --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch	
 	
-	Write-Output "Invoking 'dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output'"
 	dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output
 	popd
 

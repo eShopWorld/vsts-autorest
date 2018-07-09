@@ -8,4 +8,4 @@ $extensions | % { $extensionArgs += $_.FullName + " " }
 
 Write-Output "Calling command: 'node $tfxCli extension create --manifest-globs $extensionArgs'"
 
-Invoke-Expression -Command "node $tfxCli extension create --manifest-globs $extensionArgs"
+Invoke-Expression -Command "node '$tfxCli' extension create --manifest-globs $extensionArgs"
