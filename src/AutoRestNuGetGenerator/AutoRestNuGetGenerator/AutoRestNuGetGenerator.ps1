@@ -44,8 +44,8 @@ try {
 	Write-Output "invoking 'npm install -g autorest@latest'"
 	npm install -g autorest@latest
 
-	Write-Output "invoking 'autorest --reset'"
-	autorest --reset
+	#Write-Output "invoking 'autorest --reset'"
+	#autorest --reset --verbose --debug
 
 	try
 	{
@@ -61,7 +61,7 @@ try {
 	$credentialSwitch = if ($input_AddServiceClientCredentials) {"--add-credentials"} else {""}
 
 	Write-Output "Invoking 'autorest config.md --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch'"
-	autorest config.md --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch	
+	autorest config.md --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch	--verbose --debug
 	
 	dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output
 	popd
