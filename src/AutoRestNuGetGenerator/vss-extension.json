@@ -30,7 +30,7 @@
   ],
   "screenshots": [
     {
-      "path": "AutoRestNuGetGenerator/static/images/screen1.png"
+      "path": "AutoRestNuGetGenerator/static/images/Screen1.png"
     }
   ],
   "content": {
@@ -72,7 +72,7 @@
   "contributions": [
     {
       "id": "AutoRestNuGetPackageGenerator",
-      "targets": [
+/      "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "type": "ms.vss-distributed-task.task",
