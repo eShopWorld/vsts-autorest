@@ -41,11 +41,15 @@ try {
 	$env:path+=";C:\Windows\ServiceProfiles\NetworkService\AppData\Roaming\npm"
 	$env:path+=";$env:SYSTEM_DEFAULTWORKINGDIRECTORY\$packageDirName\tools"
 
-	Write-Output "invoking 'npm install -g autorest@latest'"
-	npm install -g autorest@latest
+	#if autorest is installed, skip the set up
+	$autorestNPMCheck = npm ls -g autorest
+	Write-Host $autorestNPMCheck
 
-	#Write-Output "invoking 'autorest --reset'"
-	#autorest --reset --verbose --debug
+	if (!$autorestNPMCheck -or $autorestNPMCheck.Count -lt 2 -or !$autorestNPMCheck[1].Contains("autorest"))
+	{
+		Write-Output "invoking 'npm install -g autorest@latest'"
+		npm install -g autorest@latest
+	}
 
 	try
 	{

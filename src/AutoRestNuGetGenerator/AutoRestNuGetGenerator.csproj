@@ -51,6 +51,7 @@
     <None Include="package.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Tests\PetStoreTestBed.ps1" />
     <None Include="vss-extension.json" />
     <None Include="ThirdPartyNotices.txt" />
     <None Include="license.md" />
