@@ -72,7 +72,7 @@
   "contributions": [
     {
       "id": "AutoRestNuGetPackageGenerator",
-/      "targets": [
+      "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "type": "ms.vss-distributed-task.task",
