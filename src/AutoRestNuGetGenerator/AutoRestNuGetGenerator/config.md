@@ -4,5 +4,5 @@
 ``` yaml
 
 #use-extension:
-  #"@microsoft.azure/autorest.csharp": https://github.com/VaclavK/autorest.csharp
+  #"@microsoft.azure/autorest.csharp": https://github.com/eShopWorld/autorest.csharp
   
