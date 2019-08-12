@@ -3,6 +3,6 @@
 
 ``` yaml
 
-use-extension:
-  "@microsoft.azure/autorest.csharp": https://github.com/eShopWorld/autorest.csharp
+#use-extension:
+  #"@microsoft.azure/autorest.csharp": https://github.com/eShopWorld/autorest.csharp
   

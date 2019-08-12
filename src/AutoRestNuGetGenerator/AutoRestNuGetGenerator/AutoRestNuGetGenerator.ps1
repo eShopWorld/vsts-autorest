@@ -64,14 +64,32 @@ try {
 
 	$credentialSwitch = if ($input_AddServiceClientCredentials) {"--add-credentials"} else {""}
 
-	Write-Output "Invoking 'autorest config.md --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch'"
-	autorest config.md --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch	--verbose --debug
-	
-	dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output
+	Write-Output "Invoking 'autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch'"
+	$autorestOutput = autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch	--verbose --debug 2>&1
+	if ($LASTEXITCODE -ne 0)
+	{
+		Write-Error "autorest command failed with $autorestOutput"
+		exit
+	}
+
+	$createProjectOutput = dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output 2>&1
+	if ($LASTEXITCODE -ne 0)
+	{
+		Write-Error "dotnet autorest-createproject command failed with $createProjectOutput"
+		exit
+	}
+
 	popd
 
 	pushd $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output
-	dotnet build -c release
+	$buildOutput = dotnet build -c release 2>&1
+
+	if ($LASTEXITCODE -ne 0)
+	{
+		Write-Error "dotnet build command failed with $buildOutput"
+		exit
+	}
+
 	popd
 } finally {
 	Trace-VstsLeavingInvocation $MyInvocation

@@ -314,3 +314,5 @@ __pycache__/
 /src/tfx.cmd
 /src/tfx
 /src/AutoRestNuGetGenerator/dotnet-autorest-createproject
+eShopWorld.AutoRest.CreateProject.*
+output
