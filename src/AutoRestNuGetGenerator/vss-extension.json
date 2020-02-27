@@ -5,7 +5,7 @@
   "name": "AutoRest NuGet Package Generator",
   "scopes": [],
   "description": "generator for autorest client nuget package",
-  "publisher": "eshopworld-devops",
+  "publisher": "eshopworld",
   "public": true,
   "icons": {
     "default": "static/images/logo.png"
