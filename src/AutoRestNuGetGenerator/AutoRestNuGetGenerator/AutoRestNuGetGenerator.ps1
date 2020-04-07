@@ -67,8 +67,8 @@ try {
 	$credentialSwitch = if ($input_AddServiceClientCredentials) {"--add-credentials"} else {""}
 	$v3Switch = if ($input_OpenAPIv3) {"--v3"} else {""}
 
-	Write-Output "Invoking 'autorest $input_OpenAPIv3 --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch $v3Switch'"
-	$autorestOutput = autorest $input_OpenAPIv3 --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch $v3Switch --verbose --debug 2>&1
+	Write-Output "Invoking 'autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch $v3Switch'"
+	$autorestOutput = autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch $v3Switch --verbose --debug 2>&1
 	if ($LASTEXITCODE -ne 0)
 	{
 		Write-Error "autorest command failed with $autorestOutput"
