@@ -10,7 +10,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 30
+    "Patch": 31
   },
   "demands": [],
   "inputs": [
@@ -32,6 +32,13 @@
       "name": "AddServiceClientCredentials",
       "type": "boolean",
       "label": "Add Service Client credentials (--add-credentials switch)",
+      "defaultValue": false,
+      "required": true
+    },
+    {
+      "name": "OpenAPIv3",
+      "type": "boolean",
+      "label": "Set OpenAPI V3 (--v3 switch)",
       "defaultValue": false,
       "required": true
     }
