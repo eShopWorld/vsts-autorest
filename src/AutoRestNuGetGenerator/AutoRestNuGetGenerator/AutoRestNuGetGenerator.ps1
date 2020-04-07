@@ -20,6 +20,7 @@ try {
     $input_SwaggerURL = Get-VstsInput -Name 'SwaggerURL' -Require
     $input_Namespace = Get-VstsInput -Name 'Namespace' -Require
 	$input_AddServiceClientCredentials = Get-VstsInput -Name 'AddServiceClientCredentials' -AsBool -Require
+	$input_OpenAPIv3 = Get-VstsInput -Name 'OpenAPIv3' -AsBool -Require
   
 
     Write-Output "Inputs..."
@@ -28,6 +29,7 @@ try {
     Write-Output "Swagger URL: $input_SwaggerURL"
     Write-Output "Namespace: $input_Namespace"
 	Write-Output "AddServiceClientCredentials: $input_AddServiceClientCredentials"
+	Write-Output "Open API V3: $input_OpenAPIv3"
 	Write-Output "ErrorActionPreference : $input_errorActionPreference"
 
 
@@ -63,9 +65,10 @@ try {
 	}
 
 	$credentialSwitch = if ($input_AddServiceClientCredentials) {"--add-credentials"} else {""}
+	$v3Switch = if ($input_OpenAPIv3) {"--v3"} else {""}
 
-	Write-Output "Invoking 'autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch'"
-	$autorestOutput = autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch	--verbose --debug 2>&1
+	Write-Output "Invoking 'autorest --v3 --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch $v3Switch'"
+	$autorestOutput = autorest --v3 --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $credentialSwitch $v3Switch --verbose --debug 2>&1
 	if ($LASTEXITCODE -ne 0)
 	{
 		Write-Error "autorest command failed with $autorestOutput"
