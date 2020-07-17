@@ -10,7 +10,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 32
+    "Patch": 33
   },
   "demands": [],
   "inputs": [
@@ -19,12 +19,26 @@
       "type": "string",
       "label": "URL of the Swagger JSON",
       "defaultValue": "",
-      "required": true
+      "required": false
+    },
+	{
+      "name": "SwaggerPath",
+      "type": "string",
+      "label": "Local path of the Swagger JSON",
+      "defaultValue": "",
+      "required": false
     },
     {
       "name": "Namespace",
       "type": "string",
-      "label": "namespace for the generated code",
+      "label": "Namespace for the generated code",
+      "defaultValue": "",
+      "required": true
+    },
+    {
+      "name": "ClientName",
+      "type": "string",
+      "label": "Client filename for the generated code",
       "defaultValue": "",
       "required": true
     },
@@ -41,6 +55,20 @@
       "label": "Set OpenAPI V3 (--v3 switch)",
       "defaultValue": false,
       "required": true
+    },
+    {
+      "name": "BuildClient",
+      "type": "boolean",
+      "label": "Generates a .csprojs for generated autorest output",
+      "defaultValue": false,
+      "required": true
+    },
+    {
+      "name": "BuildArguments",
+      "type": "string",
+      "label": "Dotnet build additional arguments, we always run with '-c release' argument",
+      "defaultValue": "",
+      "required": false
     }
   ],
   "instanceNameFormat": "AutorestNuGetPackageGenerator",
