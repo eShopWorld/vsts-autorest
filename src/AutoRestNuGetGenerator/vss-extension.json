@@ -1,10 +1,10 @@
 {
   "manifestVersion": 1,
   "id": "AutoRestNuGetPackageGenerator",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "name": "AutoRest NuGet Package Generator",
   "scopes": [],
-  "description": "generator for autorest client nuget package",
+  "description": "Generator for autorest client nuget package",
   "publisher": "eshopworld",
   "public": true,
   "icons": {
