@@ -1,8 +1,8 @@
 {
   "id": "06f20e25-89ca-4bf0-b044-8b55d33b2f0b",
   "name": "AutorestNuGetPackageGenerator",
-  "friendlyName": "generate nuget package for autorest client",
-  "description": "this task generates autorest nuget package",
+  "friendlyName": "Generate nuget package for autorest client",
+  "description": "This task generates autorest nuget package",
   "helpMarkDown": "[More Information](https://url.to/yourmarkdown)",
   "category": "Package",
   "visibility": [ "Release" ],
