@@ -40,7 +40,7 @@
       "type": "string",
       "label": "Client filename for the generated code",
       "defaultValue": "",
-      "required": true
+      "required": false
     },
     {
       "name": "AddServiceClientCredentials",
