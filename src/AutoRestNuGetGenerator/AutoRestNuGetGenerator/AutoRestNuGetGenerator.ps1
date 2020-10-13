@@ -119,8 +119,8 @@ try {
         $buildSwitch = if ($input_BuildArguments) { $input_BuildArguments } else { "" }
         Push-Location $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output
 
-        Write-Output "Invoking 'dotnet build -c release $buildSwitch' to create the nuget package"
-        dotnet build -c release $buildSwitch
+        Write-Output "Invoking 'dotnet build --configuration Release $buildSwitch' to create the nuget package"
+        dotnet build --configuration Release $buildSwitch
         Pop-Location
 
         if ($LASTEXITCODE -ne 0)

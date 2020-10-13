@@ -12,7 +12,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 38
+    "Patch": 39
   },
   "demands": [],
   "inputs": [
@@ -68,7 +68,7 @@
     {
       "name": "BuildArguments",
       "type": "string",
-      "label": "Dotnet build arguments, base command is 'dotnet -c release'",
+      "label": "Dotnet build arguments, base command is 'dotnet build --configuration Release'",
       "defaultValue": "",
       "required": false
     }
