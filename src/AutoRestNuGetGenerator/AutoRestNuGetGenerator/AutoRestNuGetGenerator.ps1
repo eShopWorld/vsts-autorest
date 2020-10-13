@@ -22,8 +22,8 @@ try {
     $input_Namespace = Get-VstsInput -Name 'Namespace' -Require
     $input_ClientName = Get-VstsInput -Name 'Clientname'
     $input_AddServiceClientCredentials = Get-VstsInput -Name 'AddServiceClientCredentials' -AsBool -Require
-    $input_OpenAPIv3 = Get-VstsInput -Name 'OpenAPIv3' -AsBool -Default $false
-    $input_BuildClient = Get-VstsInput -Name 'BuildClient' -AsBool -Default $true
+    $input_OpenAPIv3 = Get-VstsInput -Name 'OpenAPIv3' -AsBool
+    $input_BuildClientProject = Get-VstsInput -Name 'BuildClient' -AsBool
     $input_BuildArguments = Get-VstsInput -Name 'BuildArguments'
 
 

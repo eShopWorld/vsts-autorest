@@ -12,7 +12,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 35
+    "Patch": 36
   },
   "demands": [],
   "inputs": [
@@ -62,7 +62,7 @@
       "name": "BuildClient",
       "type": "boolean",
       "label": "Generates a .csproj for the autorest output",
-      "defaultValue": false,
+      "defaultValue": true,
       "required": true
     },
     {
