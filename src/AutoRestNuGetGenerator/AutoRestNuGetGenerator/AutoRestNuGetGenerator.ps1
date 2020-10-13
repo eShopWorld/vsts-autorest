@@ -113,24 +113,24 @@ try {
         $createProjectOutput = dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output 2>&1
         if ($LASTEXITCODE -ne 0) {
             $failed = $true
-            Write-VstsTaskError -Message"dotnet autorest-createproject command failed with $createProjectOutput"
+            Write-VstsTaskError -Message "dotnet autorest-createproject command failed with $createProjectOutput"
         }
     
         $buildSwitch = if ($input_BuildArguments) { $input_BuildArguments } else { "" }
         Push-Location $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output
 
         Write-Output "Invoking 'dotnet build $buildSwitch' to create the nuget package"
-        $buildOutput = dotnet build $buildSwitch
+        dotnet build $buildSwitch
         Pop-Location
 
         if ($LASTEXITCODE -ne 0)
         {
             $failed = $true
-            Write-VstsTaskError -Message"dotnet build command failed with $buildOutput"
+            Write-VstsTaskError -Message "dotnet build command failed"
         }
     }
 
-    Write-Output "Packages created..."
+    Write-Output "Package created..."
     Get-ChildItem -Path $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output -Filter '*.nupkg' -Recurse
 
     if ($failed) {
