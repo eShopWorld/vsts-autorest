@@ -108,7 +108,7 @@ try {
         Write-VstsTaskError -Message "autorest command failed with $autorestOutput"
     }
 
-    if ($input_BuildClient) {
+    if ($input_BuildClientProject) {
         Write-Output "Invoking 'dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output 2>&1'"
         $createProjectOutput = dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output 2>&1
         if ($LASTEXITCODE -ne 0) {
