@@ -12,7 +12,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 40
+    "Patch": 41
   },
   "demands": [],
   "inputs": [
@@ -64,13 +64,6 @@
       "label": "Generates a .csproj for the autorest output",
       "defaultValue": true,
       "required": true
-    },
-    {
-      "name": "BuildArguments",
-      "type": "string",
-      "label": "Dotnet build arguments, base command is 'dotnet build'",
-      "defaultValue": "--configuration Release",
-      "required": false
     }
   ],
   "instanceNameFormat": "AutorestNuGetPackageGenerator",

@@ -24,8 +24,6 @@ try {
     $input_AddServiceClientCredentials = Get-VstsInput -Name 'AddServiceClientCredentials' -AsBool -Require
     $input_OpenAPIv3 = Get-VstsInput -Name 'OpenAPIv3' -AsBool
     $input_BuildClientProject = Get-VstsInput -Name 'BuildClient' -AsBool
-    $input_BuildArguments = Get-VstsInput -Name 'BuildArguments'
-
 
     Write-Output "Input Parameters..."
     Write-Output "Working Directory: $env:SYSTEM_DEFAULTWORKINGDIRECTORY"
@@ -37,7 +35,6 @@ try {
     Write-Output "AddServiceClientCredentials: $input_AddServiceClientCredentials"
     Write-Output "Open API V3: $input_OpenAPIv3"
     Write-Output "BuildClientProject : $input_BuildClientProject"
-    Write-Output "BuildArguments : $input_BuildArguments"
     Write-Output "ErrorActionPreference : $input_errorActionPreference"
 
     if ($input_BuildClientProject) {
@@ -115,12 +112,11 @@ try {
             $failed = $true
             Write-VstsTaskError -Message "dotnet autorest-createproject command failed with $createProjectOutput"
         }
-    
-        $buildSwitch = if ($input_BuildArguments) { $input_BuildArguments } else { "" }
+
         Push-Location $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output
 
-        Write-Output "Invoking 'dotnet build $buildSwitch' to create the nuget package"
-        dotnet build $buildSwitch
+        Write-Output "Invoking 'dotnet build --configuration Release' to create the nuget package"
+        dotnet build --configuration Release
         Pop-Location
 
         if ($LASTEXITCODE -ne 0)
