@@ -40,7 +40,7 @@ try {
     if ($input_BuildClientProject) {
         Write-Output "Installing the eShopWorld.AutoRest.CreateProject nuget package"
 
-        nuget install eShopWorld.AutoRest.CreateProject -OutputDirectory $env:SYSTEM_DEFAULTWORKINGDIRECTORY
+        nuget install eShopWorld.AutoRest.CreateProject -OutputDirectory $env:SYSTEM_DEFAULTWORKINGDIRECTORY -ConfigFile nuget.config
 
         $packageDirName = (Get-ChildItem -Directory -Path $env:SYSTEM_DEFAULTWORKINGDIRECTORY -Filter "eshopworld.autorest.createproject*" | Sort-Object LastWriteTime -Descending | Select-Object -First 1).Name
 
