@@ -12,7 +12,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 42
+    "Patch": 43
   },
   "demands": [],
   "inputs": [
@@ -64,6 +64,14 @@
       "label": "Generates a .csproj for the autorest output",
       "defaultValue": true,
       "required": true
+    },
+    {
+      "name": "CoreVersion",
+      "type": "string",
+      "label": "Specify Autorest-Core extension to install",
+      "defaultValue": "3.0.6371",
+      "required": false,
+      "helpMarkdown": "If no value specified then latest version will be installed"
     }
   ],
   "instanceNameFormat": "AutorestNuGetPackageGenerator",
