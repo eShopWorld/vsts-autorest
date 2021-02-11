@@ -24,6 +24,7 @@ try {
     $input_AddServiceClientCredentials = Get-VstsInput -Name 'AddServiceClientCredentials' -AsBool -Require
     $input_OpenAPIv3 = Get-VstsInput -Name 'OpenAPIv3' -AsBool
     $input_BuildClientProject = Get-VstsInput -Name 'BuildClient' -AsBool
+    $input_CoreVersion = Get-VstsInput -Name 'CoreVersion'
 
     Write-Output "Input Parameters..."
     Write-Output "Working Directory: $env:SYSTEM_DEFAULTWORKINGDIRECTORY"
@@ -36,6 +37,11 @@ try {
     Write-Output "Open API V3: $input_OpenAPIv3"
     Write-Output "BuildClientProject : $input_BuildClientProject"
     Write-Output "ErrorActionPreference : $input_errorActionPreference"
+    Write-Output "Autorest-Core extension version : $input_CoreVersion"
+    
+    if ($input_CoreVersion) {
+        $coreVersion = "--version={0}" -f $input_CoreVersion
+    }
 
     if ($input_BuildClientProject) {
         Write-Output "Installing the eShopWorld.AutoRest.CreateProject nuget package"
@@ -98,12 +104,8 @@ try {
     $v3Switch = if ($input_OpenAPIv3) { "--v3" } else { "" }
     $clientNameSwitch = if ($input_ClientName) { "--override-client-name=$input_ClientName" } else { "" }
 
-    Write-Output "Invoking 'autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $clientNameSwitch $credentialSwitch $v3Switch'"
-    $autorestOutput = autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $clientNameSwitch $credentialSwitch $v3Switch --verbose --debug 2>&1
-    if ($LASTEXITCODE -ne 0) {
-        $failed = $true
-        Write-VstsTaskError -Message "autorest command failed with $autorestOutput"
-    }
+    Write-Output "Invoking 'autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $coreVersion $clientNameSwitch $credentialSwitch $v3Switch'"
+    autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $coreVersion $clientNameSwitch $credentialSwitch $v3Switch --verbose --debug
 
     if ($input_BuildClientProject) {
         Write-Output "Invoking 'dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output 2>&1'"

@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "AutoRestNuGetPackageGenerator",
-  "version": "1.0.42",
+  "version": "1.0.43",
   "name": "AutoRest NuGet Package Generator",
   "scopes": [],
   "description": "Generator for autorest client nuget package",
