@@ -104,8 +104,8 @@ try {
     $v3Switch = if ($input_OpenAPIv3) { "--v3" } else { "" }
     $clientNameSwitch = if ($input_ClientName) { "--override-client-name=$input_ClientName" } else { "" }
 
-    Write-Output "Invoking 'autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $coreVersion $clientNameSwitch $credentialSwitch $v3Switch'"
-    autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $coreVersion $clientNameSwitch $credentialSwitch $v3Switch --verbose --debug
+    Write-Output "Invoking 'autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $coreVersion $clientNameSwitch $credentialSwitch $v3Switch --legacy'"
+    autorest --input-file=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json --csharp --output-folder=$env:SYSTEM_DEFAULTWORKINGDIRECTORY\output --namespace=$input_Namespace $coreVersion $clientNameSwitch $credentialSwitch $v3Switch --verbose --debug --legacy
 
     if ($input_BuildClientProject) {
         Write-Output "Invoking 'dotnet autorest-createproject -s $env:SYSTEM_DEFAULTWORKINGDIRECTORY\definition.json -o $env:SYSTEM_DEFAULTWORKINGDIRECTORY\output 2>&1'"
